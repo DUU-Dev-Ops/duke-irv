@@ -9,15 +9,18 @@ var app = new Vue({
     },
     methods: {
         setCurrPos: function(position) {
+            var ctx = this;
             this.currPos = position;
-            this.results = this.allResults[position];
+            this.results = {};
+            setTimeout(function() {
+                ctx.results = ctx.allResults[position];
+            }, 100);
         },
         downloadVotes: function() {
             var ctx = this;
             var voteArray = this.results.validVotes.map(function(vote) {
                 return vote[ctx.currPos];
             });
-            console.log(voteArray);
             var csv = Papa.unparse(voteArray);
             download(csv, this.currPos.replace(/\W/g, '') + ".csv", "text/csv")
         }

@@ -56,8 +56,8 @@
                                 <br />
                                 <div v-for="round in results.rounds">
                                     <h4>Round {{round.number}}:</h4>
-                                    <bar-chart v-if="round.number === 1" :data="round.chartData"></bar-chart>
-                                    <bar-chart v-if="round.number > 1" :stacked="true" :data="round.stackedData"></bar-chart>
+                                    <bar-chart v-if="round.number === 1" :data="round.chartData" :refresh="3"></bar-chart>
+                                    <bar-chart v-if="round.number > 1" :stacked="true" :data="round.stackedData" :refresh="3"></bar-chart>
                                     <div v-if="round.number < results.rounds.length">
                                         Loser: {{round.loser}}
                                     </div>
